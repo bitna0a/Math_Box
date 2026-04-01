@@ -71,9 +71,52 @@
 <br/>
 <br/>
 
-## 🤝 협업 방식
-- **커밋 컨벤션**: `[feat]: 기능 추가`, `[fix]: 버그 수정`, `[design]: CSS 등 사용자 UI 디자인 변경`
-- **브랜치 전략**: `main` (배포용) <- `develop` (테스트용) <- `feat/#이슈명/기능명` (작업용)
+## 🤝 협업 규칙 (Convention & Strategy)
+
+### 📝 커밋 컨벤션 (Commit Convention)
+
+**1. 커밋 메시지 구조**
+```text
+[type]: Subject
+```
+
+**2. 커밋 타입 (Commit Type)**
+| Type | 설명 |
+| --- | --- |
+| `[feat]` | 새로운 기능 구현 |
+| `[fix]` | 버그, 오류 해결 |
+| `[design]` | 사용자 UI 변경 (CSS 등) |
+| `[style]` | 코드 스타일 변경 (포매팅 등, 비즈니스 로직 변경 없음) |
+| `[refactor]` | 기능 변화 없는 코드 구조 개선 |
+| `[chore]` | 라이브러리 설치, 설정 파일 변경 등 기타 작업 |
+| `[docs]` | README나 WIKI 등의 문서 개정 |
+
+**3. 커밋 제목 규칙 (Subject Rule)**
+- 커밋 제목은 **최대 50자**로 제한합니다.
+- '어떻게' 구현했는지보다 **'무엇을', '왜' 변경했는지** 한글로 명확하게 작성합니다.
+- 제목 끝에 마침표(`.`)를 붙이지 않습니다.
+
+---
+
+### 🌿 브랜치 전략 (Branch Strategy)
+프로젝트의 안정성과 효율적인 협업을 위해 목적에 따라 브랜치를 엄격히 분리하여 운영했습니다.
+
+**1. 주요 브랜치 운영**
+- **`main`**: 실제 서비스가 배포되는 가장 안정적인 브랜치
+- **`develop`**: 각 기능 브랜치에서 작업된 코드가 병합되는 테스트 및 통합 브랜치
+
+**2. 작업 브랜치 명명 규칙 (Naming Convention)**
+작업의 종류와 관련 이슈를 한눈에 파악할 수 있도록 아래와 같은 규칙을 사용했습니다.
+
+| 종류 | 브랜치명 형식 | 예시 |
+| --- | --- | --- |
+| **기능 개발** | `feat/#이슈명/기능이름` | `feat/#login/social-login` |
+| **버그 수정** | `fix/#이슈명/버그이름` | `fix/#header/mobile-overlap` |
+
+**3. 협업 워크플로우**
+> **`main`** (배포) ◀ **`develop`** (통합) ◀ **`feat`** (개별 작업)
+- 개별 작업 브랜치에서 구현 완료 후, **`develop`** 브랜치로 Pull Request를 보냅니다.
+- 팀원의 코드 리뷰를 거친 뒤 **`develop`**에 병합하며, 최종 확인된 내용을 **`main`**에 반영합니다.
 
 <br/>
 <br/>
@@ -81,7 +124,7 @@
 ## ⚙️ 실행 방법
 ```bash
 # 저장소 클론
-$ git clone [https://github.com/WHYNE-team-1/WHYNE.git](https://github.com/WHYNE-team-1/WHYNE.git)
+$ git clone https://github.com/WHYNE-team-1/WHYNE.git
 
 # 패키지 설치
 $ npm install
